@@ -18,13 +18,26 @@ class ventanaPrincipal(wx.Frame):
         # Creamos la barra de Menu
         menubar = wx.MenuBar()
         # Creamos el Menu
-        fileMenu = wx.Menu()
-        # Creamos los items del Menu
-        fileItem = fileMenu.Append(wx.ID_EXIT, 'Salir', 'Salir de la App')
-        menubar.Append(fileM
-        enu, '&Archivo')
+        archivo = wx.Menu()
+        archivo.Append(wx.ID_FILE, '&File')
+        archivo.Append(wx.ID_EDIT, '&Edit')
+        archivo.Append(wx.ID_SAVE, '&Save')
+        archivo.Append(wx.ID_HELP, '&Help')
+        archivo.AppendSeparator()
+
+        edit = wx.Menu()
+        edit.Append(wx.ID_ANY, "&XItem")
+        edit.Append(wx.ID_ANY, "&YItem")
+        edit.Append(wx.ID_ANY, "&ZItem")
+
+        archivo.AppendMenu(wx.ID_ANY, 'E&ditar', edit)
+
+        opcion = wx.MenuItem(archivo, wx.ID_ANY, '&Quit')
+        archivo.AppendItem(opcion)
+
+        self.Bind(wx.EVT_MENU, self.OnQuit, opcion)
+        menubar.Append(archivo, '&Archivo')
         self.SetMenuBar(menubar)
-        self.Bind(wx.EVT_MENU, self.OnQuit, fileItem)
         self.Show(True)
 
     def OnQuit(self, e):
