@@ -5,7 +5,7 @@ class MyFrame(wx.Frame):
         super(MyFrame, self).__init__(parent, title=title, size=(800, 600))
         self.Centre()
         # Se crea el panel
-        self.panel = MyPanel(self)
+        panel = MyPanel(self)
 
 class MyPanel(wx.Panel):
     def __init__(self, parent):
